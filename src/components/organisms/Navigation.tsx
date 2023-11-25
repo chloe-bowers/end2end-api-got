@@ -13,7 +13,7 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
-import logo from '../../assets/jobcluster.svg';
+import logo from '../../assets/logo.png';
 
 const pages = ['Houses', 'Persons', 'Quotes'];
 
@@ -29,19 +29,19 @@ function Navigation() {
   };
 
   return (
-    <AppBar position='static'>
-      <Container maxWidth={false}>
+    <AppBar position='static' color='transparent'>
+      <Container maxWidth={false} sx={{ backgroundColor: "#d2d5d9"}}>
         <Toolbar disableGutters>
           <Box mr={2}>
             <NavLink to={`/`} key={'index'}>
-              <img src={logo} className='logo' alt='Vite logo' />
+              <img src={logo} className='logo' alt='Vite logo' width={300} />
             </NavLink>
           </Box>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <NavLink to={`/${page.toLowerCase()}`} key={page}>
-                <Button sx={{ my: 2, color: 'white', display: 'block' }}>
+                <Button sx={{ my: 2, color: 'black' }}>
                   {page}
                 </Button>
               </NavLink>
