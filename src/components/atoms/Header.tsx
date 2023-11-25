@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   NavLink,
   BrowserRouter as Router,
@@ -34,9 +35,8 @@ function ResponsiveAppBar() {
         </Container>
       </AppBar>
       <Routes>
-        <Route path='/' element={<HousesPage />} />
-        <Route path='/houses' element={<HousesPage />} />
-        <Route path='/quotes' element={<QuotesPage />} />
+        <Route path='/houses/*' element={<HousesPage />} />
+        <Route path='/quotes/*' element={<QuotesPage />} />
       </Routes>
     </Router>
   );

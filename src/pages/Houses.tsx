@@ -2,6 +2,7 @@
 
 import React, { useEffect } from 'react';
 import useFetchHouses from '../hooks/useFetchHouses';
+import { Link, Routes, Route } from 'react-router-dom';
 import {
   Typography,
   CircularProgress,
@@ -9,14 +10,40 @@ import {
   List,
   ListItem,
   ListItemText,
-  Box,
 } from '@mui/material';
+import HouseDetail from './HouseDetail';
+
+interface Member {
+  name: string;
+  slug: string;
+}
+
+interface House {
+  slug: string;
+  name: string;
+  members: Member[];
+}
+
+export interface HousesProps {
+  houses: House[];
+}
+
+const ListHouses: React.FC<HousesProps> = ({ houses }) => (
+  <List>
+    {houses.map((house) => (
+      <ListItem key={house.slug}>
+        <Link to={`/houses/${house.slug}`}>
+          <ListItemText primary={house.name} />
+        </Link>
+      </ListItem>
+    ))}
+  </List>
+);
 
 const HousesPage: React.FC = () => {
   const { houses, loading, error } = useFetchHouses();
 
-  useEffect(() => {
-  }, [houses]);
+  useEffect(() => {}, [houses]);
 
   return (
     <Paper elevation={3} style={{ padding: '20px', marginTop: '20px' }}>
@@ -26,18 +53,10 @@ const HousesPage: React.FC = () => {
           Error fetching houses: {error.message}
         </Typography>
       )}
-      {houses.map((house) => (
-        <Box key={house.slug}>
-          <Typography variant='h5'>{house.name}</Typography>
-          <List>
-            {house.members.map((member) => (
-              <ListItem key={member.slug}>
-                <ListItemText primary={member.name} />
-              </ListItem>
-            ))}
-          </List>
-        </Box>
-      ))}
+      <Routes>
+        <Route path='/:houseSlug' element={<HouseDetail houses={houses} />} />
+        <Route path='/' element={<ListHouses houses={houses} />} />
+      </Routes>
     </Paper>
   );
 };
