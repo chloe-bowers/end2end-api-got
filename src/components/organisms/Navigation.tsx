@@ -41,7 +41,7 @@ function Navigation() {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <NavLink to={`/${page.toLowerCase()}`} key={page}>
-                <Button sx={{ my: 2, color: 'black' }}>
+                <Button sx={{ my: 2, color: 'black', fontFamily: 'roboto' }}>
                   {page}
                 </Button>
               </NavLink>

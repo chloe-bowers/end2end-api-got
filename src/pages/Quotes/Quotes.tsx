@@ -28,7 +28,7 @@ const QuotesPage: React.FC = ({}) => {
         <Typography variant='h5' pb={2}>
           Quotes
         </Typography>
-        <Button variant='contained' onClick={handleRefresh}>
+        <Button variant='contained' color='inherit' onClick={handleRefresh}>
           Refresh
         </Button>
       </Box>
