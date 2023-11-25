@@ -12,20 +12,11 @@ import {
   Box,
 } from '@mui/material';
 
-interface HousesPageProps {
-  selectedPage: string;
-}
-
-const HousesPage: React.FC<HousesPageProps> = ({ selectedPage }) => {
+const HousesPage: React.FC = () => {
   const { houses, loading, error } = useFetchHouses();
 
   useEffect(() => {
-    console.log('Houses data:', houses);
   }, [houses]);
-
-  if (selectedPage !== 'Houses') {
-    return null;
-  }
 
   return (
     <Paper elevation={3} style={{ padding: '20px', marginTop: '20px' }}>

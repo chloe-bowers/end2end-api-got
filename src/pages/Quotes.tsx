@@ -1,0 +1,54 @@
+import React, { useEffect } from 'react';
+import useFetchQuotes from '../hooks/useFetchQuotes';
+import {
+  Typography,
+  CircularProgress,
+  Paper,
+  List,
+  ListItem,
+  ListItemText,
+  Box,
+  Button,
+} from '@mui/material';
+
+const QuotesPage: React.FC = ({}) => {
+  const { quotes, loading, error, refetch } = useFetchQuotes();
+
+  console.log(quotes);
+
+  useEffect(() => {
+    refetch();
+  }, []);
+
+  const handleRefresh = () => {
+    refetch();
+  };
+
+  return (
+    <Paper elevation={3} style={{ padding: '20px', marginTop: '20px' }}>
+      <Box display='flex' justifyContent='space-between' alignItems='center'>
+        <Button variant='contained' onClick={handleRefresh}>
+          Refresh
+        </Button>
+      </Box>
+      {loading && <CircularProgress />}
+      {error && (
+        <Typography color='error'>
+          Error fetching quotes: {error.message}
+        </Typography>
+      )}
+      {quotes.map((quote) => (
+        <Box key={quote.character.slug}>
+          <Typography variant='h5'>{quote.character.name}</Typography>
+          <List>
+            <ListItem>
+              <ListItemText primary={quote.sentence} />
+            </ListItem>
+          </List>
+        </Box>
+      ))}
+    </Paper>
+  );
+};
+
+export default QuotesPage;
