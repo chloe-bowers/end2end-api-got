@@ -1,6 +1,6 @@
 // File: src/components/pages/HousesPage.tsx
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import useFetchHouses from '../hooks/useFetchHouses';
 import { Link, Routes, Route } from 'react-router-dom';
 import {
@@ -12,6 +12,7 @@ import {
   ListItemText,
 } from '@mui/material';
 import HouseDetail from './HouseDetail';
+import SearchBar from '../components/molecules/SearchField';
 
 interface Member {
   name: string;
@@ -28,22 +29,34 @@ export interface HousesProps {
   houses: House[];
 }
 
-const ListHouses: React.FC<HousesProps> = ({ houses }) => (
-  <>
-    <Typography variant='h5' pb={2}>
-      Houses
-    </Typography>
-    <List>
-      {houses.map((house) => (
-        <ListItem key={house.slug}>
-          <Link to={`/houses/${house.slug}`}>
-            <ListItemText primary={house.name} />
-          </Link>
-        </ListItem>
-      ))}
-    </List>
-  </>
-);
+const ListHouses: React.FC<HousesProps> = ({ houses }) => {
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+  };
+  const filteredHouses = houses.filter((house) =>
+    house.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  return (
+    <>
+      <Typography variant='h5' pb={2}>
+        Houses
+      </Typography>
+      <SearchBar onSearch={handleSearch} />
+      <List>
+        {filteredHouses.map((house) => (
+          <ListItem key={house.slug}>
+            <Link to={`/houses/${house.slug}`}>
+              <ListItemText primary={house.name} />
+            </Link>
+          </ListItem>
+        ))}
+      </List>
+    </>
+  );
+};
 
 const HousesPage: React.FC = () => {
   const { houses, loading, error } = useFetchHouses();
