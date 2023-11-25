@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   NavLink,
   BrowserRouter as Router,
@@ -20,7 +19,9 @@ function ResponsiveAppBar() {
         <Container maxWidth={false}>
           <Toolbar disableGutters>
             <Box mr={2}>
-              <img src={logo} className='logo' alt='Vite logo' />
+              <NavLink to={`/`} key={'index'}>
+                <img src={logo} className='logo' alt='Vite logo' />
+              </NavLink>
             </Box>
 
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
@@ -36,6 +37,7 @@ function ResponsiveAppBar() {
         </Container>
       </AppBar>
       <Routes>
+        <Route path='/' element={<HousesPage />} />
         <Route path='/houses/*' element={<HousesPage />} />
         <Route path='/quotes/*' element={<QuotesPage />} />
         <Route path='/persons/*' element={<PersonsPage />} />
