@@ -1,83 +1,44 @@
+// File: src/components/atoms/Header.tsx
+
 import { useState } from 'react';
-
 import logo from '../../assets/jobcluster.svg';
-
-import {
-  AppBar,
-  Box,
-  Toolbar,
-  IconButton,
-  Typography,
-  Menu,
-  Container,
-  Avatar,
-  Button,
-  MenuItem,
-} from '@mui/material';
-
+import { AppBar, Box, Toolbar, Button, Container } from '@mui/material';
+import HousesPage from '../../pages/houses';
 const pages = ['Houses', 'Persons', 'Quotes'];
 
 function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+  const [selectedPage, setSelectedPage] = useState<string>('');
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
+  const handlePageSelect = (page: string) => {
+    setSelectedPage(page);
   };
 
   return (
-    <AppBar position='static'>
-      <Container maxWidth={false}>
-        <Toolbar disableGutters>
-          <Box mr={2}>
-            <img src={logo} color='red' className='logo' alt='Vite logo' />
-          </Box>
+    <>
+      <AppBar position='static'>
+        <Container maxWidth={false}>
+          <Toolbar disableGutters>
+            <Box mr={2}>
+              <img src={logo} className='logo' alt='Vite logo' />
+            </Box>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <Menu
-              id='menu-appbar'
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
+            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign='center'>{page}</Typography>
-                </MenuItem>
+                <Button
+                  key={page}
+                  onClick={() => handlePageSelect(page)}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  {page}
+                </Button>
               ))}
-            </Menu>
-          </Box>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-            <IconButton sx={{ p: 0 }}>
-              <Avatar alt='Chloe Bowers' />
-            </IconButton>
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+            </Box>
+          </Toolbar>
+        </Container>
+      </AppBar>
+      {selectedPage === 'Houses' && <HousesPage selectedPage={selectedPage} />}
+    </>
   );
 }
+
 export default ResponsiveAppBar;
