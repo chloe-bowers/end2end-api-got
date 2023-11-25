@@ -1,0 +1,71 @@
+# System generated files
+.DS_Store
+.env
+
+# Build and output directories
+dist
+dist-ssr
+public/dist
+server/dist
+**/target
+**/build
+**/out
+**/*.checkstyle
+
+# Dependency directories
+cache
+node_modules
+
+# Visual Studio Code
+.vscode
+!.vscode/extensions.json
+
+# JetBrains IDEs
+.idea
+**/.idea
+**/*.iws
+**/*.iml
+**/*.ipr
+**/*.pid
+**/*.context
+**/*.port
+**/*.impl
+
+# STS IDE
+**/.apt_generated
+**/.classpath
+**/.factorypath
+**/.project
+**/.settings
+**/.springBeans
+**/.sts4-cache
+
+# NetBeans IDE
+**/nbproject/private
+**/nbbuild
+**/dist
+**/nbdist
+**/.nb-gradle
+
+# Log files
+logs
+**/logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Miscellaneous files
+.turbo
+vite.config.ts.timestamp-*.mjs
+*.local
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.user.config.js
+
+# Storbook build files
+**/storybook-static
