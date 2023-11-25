@@ -34,6 +34,7 @@ function ResponsiveAppBar() {
         </Container>
       </AppBar>
       <Routes>
+        <Route path='/' element={<HousesPage />} />
         <Route path='/houses' element={<HousesPage />} />
         <Route path='/quotes' element={<QuotesPage />} />
       </Routes>
