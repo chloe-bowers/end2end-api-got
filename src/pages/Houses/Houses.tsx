@@ -1,7 +1,7 @@
 // File: src/components/pages/HousesPage.tsx
 
 import React, { useEffect, useState } from 'react';
-import useFetchHouses from '../hooks/useFetchHouses';
+import useFetchHouses, { House } from '../../hooks/useFetchHouses';
 import { Link, Routes, Route } from 'react-router-dom';
 import {
   Typography,
@@ -12,18 +12,7 @@ import {
   ListItemText,
 } from '@mui/material';
 import HouseDetail from './HouseDetail';
-import SearchBar from '../components/molecules/SearchField';
-
-interface Member {
-  name: string;
-  slug: string;
-}
-
-interface House {
-  slug: string;
-  name: string;
-  members: Member[];
-}
+import SearchBar from '../../components/molecules/SearchField';
 
 export interface HousesProps {
   houses: House[];

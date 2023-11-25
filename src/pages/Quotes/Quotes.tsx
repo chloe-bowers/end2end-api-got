@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import useFetchQuotes from '../hooks/useFetchQuotes';
+import useFetchQuotes from '../../hooks/useFetchQuotes';
 import {
   Typography,
   CircularProgress,
@@ -38,8 +38,8 @@ const QuotesPage: React.FC = ({}) => {
           Error fetching quotes: {error.message}
         </Typography>
       )}
-      {quotes.map((quote) => (
-        <Box key={quote.character.slug}>
+      {quotes.map((quote, index) => (
+        <Box key={index}>
           <Typography variant='h6'>{quote.character.name}</Typography>
           <List>
             <ListItem>

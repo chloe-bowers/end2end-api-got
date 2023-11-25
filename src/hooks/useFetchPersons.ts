@@ -1,18 +1,21 @@
 import { useState, useEffect } from 'react';
 
-interface Member {
+export interface Person {
   name: string;
   slug: string;
+  house: {
+    slug: string;
+    name: string;
+  } | null;
+  quotes: string[];
 }
 
-export interface House {
-  slug: string;
-  name: string;
-  members: Member[];
+export interface PersonsProps {
+  persons: Person[];
 }
 
-const useFetchHouses = () => {
-  const [houses, setHouses] = useState<House[]>([]);
+const useFetchPersons = () => {
+  const [persons, setPersons] = useState<Person[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
 
@@ -20,14 +23,14 @@ const useFetchHouses = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          'https://api.gameofthronesquotes.xyz/v1/houses'
+          'https://api.gameofthronesquotes.xyz/v1/characters'
         );
         if (!response.ok) {
           throw new Error('Failed to fetch houses');
         }
 
-        const data: House[] = await response.json();
-        setHouses(data);
+        const data: Person[] = await response.json();
+        setPersons(data);
         setLoading(false);
       } catch (error) {
         setError(error as Error);
@@ -38,7 +41,7 @@ const useFetchHouses = () => {
     fetchData();
   }, []);
 
-  return { houses, loading, error };
+  return { persons, loading, error };
 };
 
-export default useFetchHouses;
+export default useFetchPersons;

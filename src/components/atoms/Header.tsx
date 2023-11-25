@@ -7,8 +7,9 @@ import {
 } from 'react-router-dom';
 import logo from '../../assets/jobcluster.svg';
 import { AppBar, Box, Toolbar, Button, Container } from '@mui/material';
-import HousesPage from '../../pages/Houses';
-import QuotesPage from '../../pages/Quotes';
+import HousesPage from '../../pages/Houses/Houses';
+import QuotesPage from '../../pages/Quotes/Quotes';
+import PersonsPage from '../../pages/Persons/Persons';
 
 const pages = ['Houses', 'Persons', 'Quotes'];
 
@@ -37,6 +38,7 @@ function ResponsiveAppBar() {
       <Routes>
         <Route path='/houses/*' element={<HousesPage />} />
         <Route path='/quotes/*' element={<QuotesPage />} />
+        <Route path='/persons/*' element={<PersonsPage />} />
       </Routes>
     </Router>
   );
