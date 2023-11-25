@@ -1,10 +1,33 @@
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { AppBar, Box, Toolbar, Button, Container } from '@mui/material';
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  Button,
+  Container,
+  Hidden,
+  IconButton,
+  Menu,
+  MenuItem,
+} from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+
 import logo from '../../assets/jobcluster.svg';
 
 const pages = ['Houses', 'Persons', 'Quotes'];
 
 function Navigation() {
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <AppBar position='static'>
       <Container maxWidth={false}>
@@ -24,6 +47,35 @@ function Navigation() {
               </NavLink>
             ))}
           </Box>
+
+          <Hidden mdUp>
+            <IconButton
+              color='inherit'
+              edge='end'
+              onClick={handleClick}
+              sx={{ marginLeft: 'auto' }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              id='mobile-menu'
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+            >
+              {pages.map((page) => (
+                <MenuItem key={page} onClick={handleClose}>
+                  <NavLink
+                    to={`/${page.toLowerCase()}`}
+                    style={{ textDecoration: 'none', color: 'inherit' }}
+                  >
+                    {page}
+                  </NavLink>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Hidden>
         </Toolbar>
       </Container>
     </AppBar>
