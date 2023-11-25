@@ -1,28 +1,12 @@
 import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
-
-function Copyright() {
-  return (
-    <Typography variant='body2' color='text.secondary' align='center'>
-      {'Copyright © '}
-      <Link color='inherit' href='https://mui.com/'>
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}.
-    </Typography>
-  );
-}
+import ResponsiveAppBar from './components/atoms/Header';
 
 export default function App() {
   return (
-    <Container maxWidth='sm'>
+    <Container maxWidth={false}>
       <Box sx={{ my: 4 }}>
-        <Typography variant='h4' component='h1' gutterBottom>
-          Material UI Vite.js example in TypeScript
-        </Typography>
-        <Copyright />
+        <ResponsiveAppBar />
       </Box>
     </Container>
   );
