@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Paper, List, ListItem } from '@mui/material';
+import { Typography, List, ListItem } from '@mui/material';
 
 import { useParams } from 'react-router-dom';
 import { Person } from '../../hooks/useFetchPersons';
