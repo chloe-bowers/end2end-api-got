@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 interface Character {
   name: string;
@@ -15,9 +15,9 @@ interface Quote {
 }
 
 const useFetchQuotes = () => {
-  const [quotes, setQuotes] = useState<Quote[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
+  const [quotes, setQuotes] = useState<Quote[]>([]);
 
   const fetchData = async () => {
     try {
@@ -38,12 +38,9 @@ const useFetchQuotes = () => {
     }
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const refetch = () => {
-    fetchData();
+  const refetch = async () => {
+    setQuotes([]);
+    await fetchData();
   };
 
   return { quotes, loading, error, refetch };

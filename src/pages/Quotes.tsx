@@ -14,8 +14,6 @@ import {
 const QuotesPage: React.FC = ({}) => {
   const { quotes, loading, error, refetch } = useFetchQuotes();
 
-  console.log(quotes);
-
   useEffect(() => {
     refetch();
   }, []);
@@ -27,6 +25,7 @@ const QuotesPage: React.FC = ({}) => {
   return (
     <Paper elevation={3} style={{ padding: '20px', marginTop: '20px' }}>
       <Box display='flex' justifyContent='space-between' alignItems='center'>
+        <Typography variant='h5'>Quotes</Typography>
         <Button variant='contained' onClick={handleRefresh}>
           Refresh
         </Button>
@@ -39,7 +38,7 @@ const QuotesPage: React.FC = ({}) => {
       )}
       {quotes.map((quote) => (
         <Box key={quote.character.slug}>
-          <Typography variant='h5'>{quote.character.name}</Typography>
+          <Typography variant='h6'>{quote.character.name}</Typography>
           <List>
             <ListItem>
               <ListItemText primary={quote.sentence} />
