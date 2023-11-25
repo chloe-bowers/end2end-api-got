@@ -29,7 +29,6 @@ const HousesPage: React.FC<HousesPageProps> = ({ selectedPage }) => {
 
   return (
     <Paper elevation={3} style={{ padding: '20px', marginTop: '20px' }}>
-      <Typography variant='h4'>Houses Page</Typography>
       {loading && <CircularProgress />}
       {error && (
         <Typography color='error'>
