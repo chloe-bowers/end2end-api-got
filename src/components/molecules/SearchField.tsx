@@ -15,7 +15,7 @@ const SearchField: React.FC<SearchFieldProps> = ({ onSearch }) => {
 
   return (
     <TextField
-      label='Search Houses'
+      label='Search'
       variant='outlined'
       fullWidth
       value={searchQuery}
