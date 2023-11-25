@@ -25,7 +25,9 @@ const QuotesPage: React.FC = ({}) => {
   return (
     <Paper elevation={3} style={{ padding: '20px', marginTop: '20px' }}>
       <Box display='flex' justifyContent='space-between' alignItems='center'>
-        <Typography variant='h5'>Quotes</Typography>
+        <Typography variant='h5' pb={2}>
+          Quotes
+        </Typography>
         <Button variant='contained' onClick={handleRefresh}>
           Refresh
         </Button>

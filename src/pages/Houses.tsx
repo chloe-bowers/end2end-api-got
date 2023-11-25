@@ -29,15 +29,20 @@ export interface HousesProps {
 }
 
 const ListHouses: React.FC<HousesProps> = ({ houses }) => (
-  <List>
-    {houses.map((house) => (
-      <ListItem key={house.slug}>
-        <Link to={`/houses/${house.slug}`}>
-          <ListItemText primary={house.name} />
-        </Link>
-      </ListItem>
-    ))}
-  </List>
+  <>
+    <Typography variant='h5' pb={2}>
+      Houses
+    </Typography>
+    <List>
+      {houses.map((house) => (
+        <ListItem key={house.slug}>
+          <Link to={`/houses/${house.slug}`}>
+            <ListItemText primary={house.name} />
+          </Link>
+        </ListItem>
+      ))}
+    </List>
+  </>
 );
 
 const HousesPage: React.FC = () => {
