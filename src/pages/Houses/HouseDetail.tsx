@@ -20,7 +20,7 @@ const HouseDetail: React.FC<HousesProps> = ({ houses }) => {
       <Typography variant='h5'>{house.name}</Typography>
       <List>
         {house.members.map((member) => (
-          <ListItem key={member.slug}>
+          <ListItem sx={{ display: 'list-item' }} key={member.slug}>
             <ListItemText primary={member.name} />
           </ListItem>
         ))}

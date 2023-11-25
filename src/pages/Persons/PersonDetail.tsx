@@ -26,9 +26,16 @@ const PersonDetail: React.FC<PersonDetailProps> = ({ persons }) => {
         House: {person.house?.name || 'Unknown'}
       </Typography>
       Quotes:
-      <List>
+      <List
+        sx={{
+          listStyleType: 'disc',
+          listStylePosition: 'inside',
+        }}
+      >
         {person.quotes.map((quote, index) => (
-          <ListItem key={index}>{quote}</ListItem>
+          <ListItem sx={{ display: 'list-item' }} key={index}>
+            {quote}
+          </ListItem>
         ))}
       </List>
     </>
