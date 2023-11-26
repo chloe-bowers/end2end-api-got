@@ -35,7 +35,7 @@ function Navigation() {
       <Container maxWidth={false} sx={{ backgroundColor: '#d2d5d9' }}>
         <Toolbar disableGutters>
           <Box mr={2}>
-            <NavLink to={`/`} key={'index'}>
+            <NavLink to={root} key={'index'}>
               <img src={logo} className='logo' alt='Vite logo' width={300} />
             </NavLink>
           </Box>
