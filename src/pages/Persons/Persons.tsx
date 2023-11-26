@@ -10,23 +10,9 @@ import {
 } from '@mui/material';
 import PersonDetail from './PersonDetail';
 import SearchBar from '../../components/molecules/SearchField';
-import useFetchPersons from '../../hooks/useFetchPersons';
+import useFetchPersons, { PersonsProps } from '../../hooks/useFetchPersons';
 
-export interface Person {
-  name: string;
-  slug: string;
-  house: {
-    slug: string;
-    name: string;
-  } | null;
-  quotes: string[];
-}
-
-export interface PersonsProps {
-  persons: Person[];
-}
-
-const root = '/jobcluster-project';
+const root = import.meta.env.VITE_ROOT_URL;
 
 const ListPersons: React.FC<PersonsProps> = ({ persons }) => {
   const [searchQuery, setSearchQuery] = React.useState('');

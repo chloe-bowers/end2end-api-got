@@ -6,7 +6,7 @@ import QuotesPage from './pages/Quotes/Quotes';
 import PersonsPage from './pages/Persons/Persons';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-const root = '/jobcluster-project';
+const root = import.meta.env.VITE_ROOT_URL;
 
 export default function App() {
   return (

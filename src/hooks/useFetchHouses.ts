@@ -22,6 +22,7 @@ const useFetchHouses = () => {
         const response = await fetch(
           'https://api.gameofthronesquotes.xyz/v1/houses'
         );
+        
         if (!response.ok) {
           throw new Error('Failed to fetch houses');
         }

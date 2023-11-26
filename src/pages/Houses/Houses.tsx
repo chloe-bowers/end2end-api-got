@@ -18,7 +18,7 @@ export interface HousesProps {
   houses: House[];
 }
 
-const root = '/jobcluster-project';
+const root = import.meta.env.VITE_ROOT_URL;
 
 const ListHouses: React.FC<HousesProps> = ({ houses }) => {
   const [searchQuery, setSearchQuery] = useState('');

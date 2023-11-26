@@ -17,7 +17,7 @@ import logo from '../../assets/logo.png';
 
 const pages = ['Houses', 'Persons', 'Quotes'];
 
-const root = '/jobcluster-project/';
+const root = import.meta.env.VITE_ROOT_URL;
 
 function Navigation() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -42,7 +42,7 @@ function Navigation() {
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <NavLink to={`${root}${page.toLowerCase()}`} key={page}>
+              <NavLink to={`${root}/${page.toLowerCase()}`} key={page}>
                 <Button sx={{ my: 2, color: 'black', fontFamily: 'roboto' }}>
                   {page}
                 </Button>
@@ -69,7 +69,7 @@ function Navigation() {
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleClose}>
                   <NavLink
-                    to={`${root}${page.toLowerCase()}`}
+                    to={`${root}/${page.toLowerCase()}`}
                     style={{ textDecoration: 'none', color: 'inherit' }}
                   >
                     {page}

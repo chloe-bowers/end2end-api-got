@@ -1,6 +1,6 @@
 # System generated files
 .DS_Store
-.env
+.env.local
 
 # Build and output directories
 dist

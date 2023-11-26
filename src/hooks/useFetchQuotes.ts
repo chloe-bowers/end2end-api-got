@@ -25,6 +25,7 @@ const useFetchQuotes = () => {
       const response = await fetch(
         'https://api.gameofthronesquotes.xyz/v1/random/5'
       );
+      
       if (!response.ok) {
         throw new Error('Failed to fetch quotes');
       }

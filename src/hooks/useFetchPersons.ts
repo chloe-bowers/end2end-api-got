@@ -25,6 +25,7 @@ const useFetchPersons = () => {
         const response = await fetch(
           'https://api.gameofthronesquotes.xyz/v1/characters'
         );
+        
         if (!response.ok) {
           throw new Error('Failed to fetch houses');
         }
