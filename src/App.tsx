@@ -6,6 +6,8 @@ import QuotesPage from './pages/Quotes/Quotes';
 import PersonsPage from './pages/Persons/Persons';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
+const root = '/jobcluster-project';
+
 export default function App() {
   return (
     <Router>
@@ -13,10 +15,10 @@ export default function App() {
         <Box sx={{ my: 4 }}>
           <Navigation />
           <Routes>
-            <Route path='/' element={<HousesPage />} />
-            <Route path='/houses/*' element={<HousesPage />} />
-            <Route path='/quotes/*' element={<QuotesPage />} />
-            <Route path='/persons/*' element={<PersonsPage />} />
+            <Route path={`${root}/`} element={<HousesPage />} />
+            <Route path={`${root}/houses/*`} element={<HousesPage />} />
+            <Route path={`${root}/quotes/*`} element={<QuotesPage />} />
+            <Route path={`${root}/persons/*`} element={<PersonsPage />} />
           </Routes>
         </Box>
       </Container>

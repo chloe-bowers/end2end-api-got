@@ -17,6 +17,8 @@ import logo from '../../assets/logo.png';
 
 const pages = ['Houses', 'Persons', 'Quotes'];
 
+const root = '/jobcluster-project/';
+
 function Navigation() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
@@ -30,7 +32,7 @@ function Navigation() {
 
   return (
     <AppBar position='static' color='transparent'>
-      <Container maxWidth={false} sx={{ backgroundColor: "#d2d5d9"}}>
+      <Container maxWidth={false} sx={{ backgroundColor: '#d2d5d9' }}>
         <Toolbar disableGutters>
           <Box mr={2}>
             <NavLink to={`/`} key={'index'}>
@@ -40,7 +42,7 @@ function Navigation() {
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <NavLink to={`/${page.toLowerCase()}`} key={page}>
+              <NavLink to={`${root}${page.toLowerCase()}`} key={page}>
                 <Button sx={{ my: 2, color: 'black', fontFamily: 'roboto' }}>
                   {page}
                 </Button>
@@ -67,7 +69,7 @@ function Navigation() {
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleClose}>
                   <NavLink
-                    to={`/${page.toLowerCase()}`}
+                    to={`${root}${page.toLowerCase()}`}
                     style={{ textDecoration: 'none', color: 'inherit' }}
                   >
                     {page}

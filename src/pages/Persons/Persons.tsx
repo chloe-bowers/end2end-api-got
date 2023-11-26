@@ -10,7 +10,23 @@ import {
 } from '@mui/material';
 import PersonDetail from './PersonDetail';
 import SearchBar from '../../components/molecules/SearchField';
-import useFetchPersons, { PersonsProps } from '../../hooks/useFetchPersons';
+import useFetchPersons from '../../hooks/useFetchPersons';
+
+export interface Person {
+  name: string;
+  slug: string;
+  house: {
+    slug: string;
+    name: string;
+  } | null;
+  quotes: string[];
+}
+
+export interface PersonsProps {
+  persons: Person[];
+}
+
+const root = '/jobcluster-project';
 
 const ListPersons: React.FC<PersonsProps> = ({ persons }) => {
   const [searchQuery, setSearchQuery] = React.useState('');
@@ -31,7 +47,7 @@ const ListPersons: React.FC<PersonsProps> = ({ persons }) => {
       <List>
         {filteredPersons.map((person) => (
           <ListItem key={person.slug}>
-            <Link to={`/persons/${person.slug}`}>
+            <Link to={`${root}/persons/${person.slug}`}>
               <ListItemText
                 primary={`${person.name} (${person.house?.name || 'Unknown'})`}
               />

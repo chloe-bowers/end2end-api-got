@@ -18,6 +18,8 @@ export interface HousesProps {
   houses: House[];
 }
 
+const root = '/jobcluster-project';
+
 const ListHouses: React.FC<HousesProps> = ({ houses }) => {
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -37,7 +39,7 @@ const ListHouses: React.FC<HousesProps> = ({ houses }) => {
       <List>
         {filteredHouses.map((house) => (
           <ListItem key={house.slug}>
-            <Link to={`/houses/${house.slug}`}>
+            <Link to={`${root}/houses/${house.slug}`}>
               <ListItemText primary={house.name} />
             </Link>
           </ListItem>
