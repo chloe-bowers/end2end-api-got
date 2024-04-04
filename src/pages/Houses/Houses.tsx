@@ -1,5 +1,3 @@
-// File: src/components/pages/HousesPage.tsx
-
 import React, { useEffect, useState } from 'react';
 import useFetchHouses, { House } from '../../hooks/useFetchHouses';
 import { Link, Routes, Route } from 'react-router-dom';
