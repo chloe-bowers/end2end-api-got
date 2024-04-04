@@ -1,5 +1,3 @@
-// File: src/components/pages/HouseDetail.tsx
-
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { Typography, List, ListItem, ListItemText } from '@mui/material';
